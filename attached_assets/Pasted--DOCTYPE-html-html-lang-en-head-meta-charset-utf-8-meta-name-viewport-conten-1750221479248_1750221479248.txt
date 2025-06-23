@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Probate Cost Calculator NZ - Compare Probate Fees & Options | Simply Probate</title>
+    <meta name="description" content="Free probate cost calculator NZ. Compare DIY, lawyer, Public Trust vs Simply Probate fees. Get instant estimates for estate administration costs in New Zealand.">
+    <meta name="keywords" content="probate cost nz, probate fees calculator, estate administration costs, probate cost comparison, new zealand probate calculator">
+    <link rel="canonical" href="https://simplyprobate.co.nz/probate-cost-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simplyprobate.co.nz/probate-cost-calculator.html">
+    <meta property="og:title" content="Probate Cost Calculator NZ - Compare Probate Fees & Options">
+    <meta property="og:description" content="Free probate cost calculator NZ. Compare DIY, lawyer, Public Trust vs Simply Probate fees. Get instant estimates for estate administration costs in New Zealand.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://simplyprobate.co.nz/probate-cost-calculator.html">
+    <meta property="twitter:title" content="Probate Cost Calculator NZ - Compare Probate Fees & Options">
+    <meta property="twitter:description" content="Free probate cost calculator NZ. Compare DIY, lawyer, Public Trust vs Simply Probate fees. Get instant estimates for estate administration costs in New Zealand.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-primary-50 { background-color: #eef6fb; }
+        .bg-primary-600 { background-color: #1a5b82; }
+        .bg-primary-700 { background-color: #164969; }
+        .text-primary-600 { color: #1a5b82; }
+        .text-primary-700 { color: #164969; }
+        .text-primary-800 { color: #133a56; }
+        .text-primary-900 { color: #102b40; }
+        .border-primary-200 { border-color: #b0d5eb; }
+        .border-primary-500 { border-color: #2b89c3; }
+        .hover\:bg-primary-700:hover { background-color: #164969; }
+        .focus\:ring-primary-500:focus { --tw-ring-color: #2b89c3; }
+    </style>
+    
+    <!-- Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Probate Cost Calculator NZ",
+        "description": "Free probate cost calculator for New Zealand. Compare estate administration costs across different service providers including DIY, lawyers, Public Trust, and Simply Probate.",
+        "url": "https://simplyprobate.co.nz/probate-cost-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "NZD"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "Simply Probate NZ",
+            "url": "https://simplyprobate.co.nz"
+        },
+        "audience": {
+            "@type": "Audience",
+            "geographicArea": {
+                "@type": "Country",
+                "name": "New Zealand"
+            }
+        },
+        "about": [
+            {
+                "@type": "Thing",
+                "name": "Probate Costs",
+                "description": "Costs associated with probate applications and estate administration in New Zealand"
+            },
+            {
+                "@type": "Thing",
+                "name": "Estate Administration",
+                "description": "Legal process of managing and distributing a deceased person's estate"
+            }
+        ],
+        "mainEntity": {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How much does probate cost in New Zealand?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Probate costs in New Zealand vary by provider: DIY costs around $535-$1,835, traditional lawyers charge $4,260-$7,760, Public Trust has minimum fees of $9,042 plus 5% of estate value, while Simply Probate offers fixed fees from $574 including GST."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What are the court fees for probate in New Zealand?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Court fees for probate applications in New Zealand are $260 (GST inclusive) regardless of which service provider you choose."
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold text-primary-600">Simply Probate</a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-primary-700">Home</a>
+                    <a href="/services.html" class="text-gray-600 hover:text-primary-700">Services</a>
+                    <a href="/articles/" class="text-gray-600 hover:text-primary-700">Articles</a>
+                    <a href="/faq.html" class="text-gray-600 hover:text-primary-700">FAQ</a>
+                    <a href="/contact.html" class="text-gray-600 hover:text-primary-700">Contact</a>
+                </nav>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-600 hover:text-primary-700" id="mobile-menu-button">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                <a href="/" class="block px-3 py-2 text-gray-600 hover:text-primary-700">Home</a>
+                <a href="/services.html" class="block px-3 py-2 text-gray-600 hover:text-primary-700">Services</a>
+                <a href="/articles/" class="block px-3 py-2 text-gray-600 hover:text-primary-700">Articles</a>
+                <a href="/faq.html" class="block px-3 py-2 text-gray-600 hover:text-primary-700">FAQ</a>
+                <a href="/contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary-700">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Breadcrumbs -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-2 text-sm text-gray-600">
+                <li><a href="/" class="hover:text-primary-700">Home</a></li>
+                <li><span class="mx-2">/</span></li>
+                <li class="text-gray-900">Probate Cost Calculator</li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+                <h1 class="text-3xl font-bold text-gray-900">Probate Cost Calculator NZ</h1>
+            </div>
+            <p class="text-lg text-gray-600">
+                Compare the true cost of different probate options in New Zealand
+            </p>
+            <p class="text-sm text-gray-500 mt-2">
+                <strong>Estimates only:</strong> Actual costs may vary based on your specific circumstances
+            </p>
+        </div>
+
+        <!-- Input Form -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Tell us about the estate:</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Estimated Estate Value
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-3 text-gray-400">$</span>
+                        <input
+                            type="number"
+                            id="estateValue"
+                            value="500000"
+                            class="pl-8 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                            placeholder="500000"
+                            min="0"
+                            step="10000"
+                        />
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Including property, savings, investments</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="flex items-center space-x-3">
+                            <input
+                                type="checkbox"
+                                id="hasProperty"
+                                checked
+                                class="w-5 h-5 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                            />
+                            <span class="text-sm font-medium text-gray-700">
+                                Estate includes property/real estate
+                            </span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="flex items-center space-x-3">
+                            <input
+                                type="checkbox"
+                                id="complexAssets"
+                                class="w-5 h-5 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                            />
+                            <span class="text-sm font-medium text-gray-700">
+                                Complex assets (business, overseas property, disputes)
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button
+                onclick="calculateCosts()"
+                class="mt-6 w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+            >
+                Get Cost Estimates
+            </button>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden space-y-6">
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">
+                Your Probate Cost Estimates
+            </h2>
+
+            <!-- Cost Comparison Bars -->
+            <div class="space-y-4" id="costBars">
+                <!-- Results will be populated here -->
+            </div>
+
+            <!-- Savings Highlight -->
+            <div class="bg-primary-50 border border-primary-200 rounded-lg p-4 text-center" id="savingsSection">
+                <!-- Savings content will be populated here -->
+            </div>
+
+            <!-- Public Trust Details -->
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <p class="text-sm text-yellow-800 font-semibold mb-1">Public Trust's Real Pricing:</p>
+                <p class="text-sm text-yellow-700">
+                    <strong>Minimum fees:</strong> $9,042 (setup $6,140 + probate $1,113 + finalisation $1,789)<br/>
+                    <strong>Plus hourly rates:</strong> $297-$519/hour for any additional work<br/>
+                    <strong>Plus 5% on income</strong> and potential ongoing fees
+                </p>
+                <p class="text-xs text-yellow-600 mt-1">
+                    Source: Public Trust Estate Administration Price List, July 2024
+                </p>
+            </div>
+
+            <!-- Important Disclaimers -->
+            <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 19c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                    Important: These are estimates only
+                </h3>
+                <div class="text-sm text-gray-700 space-y-2">
+                    <p>• <strong>Actual costs may vary significantly</strong> based on the complexity of your specific estate</p>
+                    <p>• <strong>Additional legal costs may apply</strong> for complex tasks like property sales, business transfers, or dispute resolution</p>
+                    <p>• <strong>Public Trust minimum fees</strong> are $9,042 even for simple estates - before any hourly charges or additional costs</p>
+                    <p>• <strong>Creditor notification costs</strong> (~$200) are recommended but not legally mandated - used to protect executor from unknown debts</p>
+                    <p>• <strong>Court fees</strong> ($260) are the same for all options</p>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="text-center border-t border-gray-200 pt-6">
+                <h3 class="text-lg font-semibold mb-2">Ready to get started?</h3>
+                <p class="text-gray-600 mb-4">Get an exact quote for your specific situation</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="https://thedisputelawyer.gavel.io/start/playground2/Simply%20Probate%20Portal" class="bg-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+                        Start Application Online
+                    </a>
+                    <a href="/contact.html" class="border border-primary-600 text-primary-600 py-3 px-6 rounded-lg font-semibold hover:bg-primary-50 transition-colors">
+                        Book Free Consultation
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">
+                    Estimates shown above - get exact pricing for your situation
+                </p>
+            </div>
+        </div>
+
+        <!-- SEO Content Section -->
+        <section class="mt-16 bg-white rounded-lg shadow-sm p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Understanding Probate Costs in New Zealand</h2>
+            
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="text-lg mb-6">When planning for estate administration, understanding probate costs NZ is essential for making informed decisions. Our calculator provides realistic estimates based on current market rates and actual provider pricing.</p>
+                
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">What Affects Probate Costs NZ?</h3>
+                <ul class="mb-6 space-y-2">
+                    <li><strong>Estate size and complexity:</strong> Larger estates with multiple assets typically incur higher costs</li>
+                    <li><strong>Property involvement:</strong> Real estate transfers require additional legal work and valuations</li>
+                    <li><strong>Service provider choice:</strong> Costs vary significantly between DIY, lawyers, and institutional providers</li>
+                    <li><strong>Geographic location:</strong> Some providers charge different rates across New Zealand regions</li>
+                </ul>
+                
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Probate Cost Comparison NZ</h3>
+                <p class="mb-4">Our calculator compares four main approaches to probate in New Zealand:</p>
+                <ul class="mb-6 space-y-2">
+                    <li><strong>DIY Probate:</strong> Lowest upfront costs but highest time investment and personal liability</li>
+                    <li><strong>Simply Probate:</strong> Fixed-fee service with expert legal oversight and fast completion</li>
+                    <li><strong>Traditional Law Firms:</strong> Full service with hourly billing that can be unpredictable</li>
+                    <li><strong>Public Trust:</strong> Institutional provider with high minimum fees and percentage-based pricing</li>
+                </ul>
+                
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Hidden Costs in Probate Applications</h3>
+                <p class="mb-4">Beyond the basic probate fees, additional costs often include:</p>
+                <ul class="mb-6 space-y-2">
+                    <li>Property valuations and real estate agent fees</li>
+                    <li>Creditor notification advertising costs</li>
+                    <li>Death certificate copies</li>
+                    <li>Legal advice for complex situations</li>
+                    <li>Tax compliance and filing fees</li>
+                </ul>
+                
+                <p class="text-lg font-medium">Use our probate cost calculator NZ to get transparent estimates and make the best choice for your family's situation.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Simply Probate</h3>
+                    <p class="text-gray-300 text-sm">Making probate simple and affordable for New Zealand families.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="/services.html" class="hover:text-white">Probate Applications</a></li>
+                        <li><a href="/services.html" class="hover:text-white">Letters of Administration</a></li>
+                        <li><a href="/services.html" class="hover:text-white">Will Annexed Applications</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="/articles/" class="hover:text-white">Articles</a></li>
+                        <li><a href="/probate-cost-calculator.html" class="hover:text-white">Cost Calculator</a></li>
+                        <li><a href="/faq.html" class="hover:text-white">FAQ</a></li>
+                        <li><a href="/contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <p class="text-gray-300 text-sm">Get in touch for professional probate assistance.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Simply Probate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/mobile-menu.js"></script>
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-NZ', {
+                style: 'currency',
+                currency: 'NZD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            }).format(amount);
+        }
+
+        function getBarWidth(cost, maxCost) {
+            return (cost / maxCost) * 100;
+        }
+
+        function calculateCosts() {
+            const estateValue = parseInt(document.getElementById('estateValue').value) || 500000;
+            const hasProperty = document.getElementById('hasProperty').checked;
+            const complexAssets = document.getElementById('complexAssets').checked;
+
+            // Base costs
+            const baseCosts = {
+                courtFees: 260,
+                creditorNotification: 200,
+                deathCertificates: 75
+            };
+
+            const otherCosts = baseCosts.creditorNotification + baseCosts.deathCertificates;
+
+            // Calculate costs for each option
+            const diyExtra = hasProperty ? 400 : 200;
+            const diyTotal = baseCosts.courtFees + otherCosts + diyExtra + (complexAssets ? 800 : 0);
+
+            const lawyerHours = complexAssets ? 15 : hasProperty ? 12 : 8;
+            const lawyerTotal = baseCosts.courtFees + otherCosts + (lawyerHours * 500);
+
+            const publicTrustMinimum = 6140 + 1113 + 1789;
+            const publicTrustPercentage = estateValue * 0.05;
+            const publicTrustTotal = Math.max(publicTrustMinimum, publicTrustPercentage);
+
+            const simplyProbateFee = 499;
+            const simplyProbateWithGST = simplyProbateFee * 1.15;
+            const simplyProbateTotal = baseCosts.courtFees + otherCosts + simplyProbateWithGST;
+
+            const costs = {
+                diy: diyTotal,
+                lawyer: lawyerTotal,
+                publicTrust: publicTrustTotal,
+                simplyProbate: simplyProbateTotal
+            };
+
+            const maxCost = Math.max(...Object.values(costs));
+
+            // Update UI
+            document.getElementById('results').classList.remove('hidden');
+            updateCostBars(costs, maxCost);
+            updateSavingsSection(costs);
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateCostBars(costs, maxCost) {
+            const costBarsHTML = `
+                <!-- DIY Option -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <span class="font-semibold text-gray-900">DIY Probate</span>
+                        </div>
+                        <span class="text-lg font-bold text-orange-600">
+                            ${formatCurrency(costs.diy)}
+                        </span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                        <div class="bg-orange-500 h-3 rounded-full" style="width: ${getBarWidth(costs.diy, maxCost)}%"></div>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        <div class="flex justify-between">
+                            <span>✅ Lowest upfront cost</span>
+                            <span>❌ High time investment</span>
+                        </div>
+                        <div class="flex justify-between mt-1">
+                            <span>❌ Personal liability risk</span>
+                            <span>❌ No legal protection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simply Probate -->
+                <div class="bg-green-50 border-2 border-green-500 rounded-lg p-4 relative">
+                    <div class="absolute -top-2 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        RECOMMENDED
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="font-semibold text-gray-900">Simply Probate</span>
+                        </div>
+                        <span class="text-lg font-bold text-green-600">
+                            ${formatCurrency(costs.simplyProbate)}
+                        </span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                        <div class="bg-green-500 h-3 rounded-full" style="width: ${getBarWidth(costs.simplyProbate, maxCost)}%"></div>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        <div class="flex justify-between">
+                            <span>✅ Simply Probate: $574 (inc GST)</span>
+                            <span>✅ Expert legal oversight</span>
+                        </div>
+                        <div class="flex justify-between mt-1">
+                            <span>✅ Court fees: $260 (included in total)</span>
+                            <span>✅ 7-day average completion</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            Plus ~$275 other costs (certificates, notifications)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traditional Lawyer -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="font-semibold text-gray-900">Traditional Law Firm</span>
+                        </div>
+                        <span class="text-lg font-bold text-blue-600">
+                            ${formatCurrency(costs.lawyer)}
+                        </span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                        <div class="bg-blue-500 h-3 rounded-full" style="width: ${getBarWidth(costs.lawyer, maxCost)}%"></div>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        <div class="flex justify-between">
+                            <span>✅ Full service option</span>
+                            <span>❌ Hourly billing uncertainty</span>
+                        </div>
+                        <div class="flex justify-between mt-1">
+                            <span>❌ Can be slow (3-6 months)</span>
+                            <span>❌ Extra charges for calls/emails</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Public Trust -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 19c-.77.833.192 2.5 1.732 2.5z"></path>
+                            </svg>
+                            <span class="font-semibold text-gray-900">Public Trust</span>
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Min $9k + 5% cap</span>
+                        </div>
+                        <span class="text-lg font-bold text-red-600">
+                            ${formatCurrency(costs.publicTrust)}
+                        </span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                        <div class="bg-red-500 h-3 rounded-full" style="width: ${getBarWidth(costs.publicTrust, maxCost)}%"></div>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        <div class="flex justify-between">
+                            <span>✅ Handles everything</span>
+                            <span>❌ Minimum $9,042 even for small estates</span>
+                        </div>
+                        <div class="flex justify-between mt-1">
+                            <span>❌ Plus hourly rates ($297-$519/hr)</span>
+                            <span>❌ ${Math.round(costs.publicTrust / costs.simplyProbate)}x more expensive than Simply Probate</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('costBars').innerHTML = costBarsHTML;
+        }
+
+        function updateSavingsSection(costs) {
+            const savingsHTML = `
+                <h3 class="text-lg font-semibold text-primary-900 mb-2">
+                    Your Potential Savings with Simply Probate
+                </h3>
+                <div class="grid grid-cols-3 gap-4 text-sm">
+                    <div>
+                        <div class="text-2xl font-bold text-green-600">
+                            ${formatCurrency(costs.publicTrust - costs.simplyProbate)}
+                        </div>
+                        <div class="text-gray-600">vs Public Trust</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-green-600">
+                            ${formatCurrency(costs.lawyer - costs.simplyProbate)}
+                        </div>
+                        <div class="text-gray-600">vs Law Firm</div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-primary-600">
+                            Expert Legal Protection
+                        </div>
+                        <div class="text-gray-600">vs DIY Risk</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('savingsSection').innerHTML = savingsHTML;
+        }
+    </script>
+    
+    <!-- Chatbot Widget -->
+    <script src="https://lingering-fog-5cf3.rion-norris.workers.dev/widget" async></script>
+</body>
+</html>
