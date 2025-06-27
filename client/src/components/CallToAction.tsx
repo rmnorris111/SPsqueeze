@@ -20,7 +20,7 @@ const CallToAction: React.FC = () => {
     
     // Small delay to ensure tracking fires before redirect
     setTimeout(() => {
-      window.open('https://docs.google.com/forms/d/e/1FAIpQLSeyK4FzJQsJZcjCfE6Koi_zEJx2T60v04IIaTIg2NsCKtNi9w/viewform?usp=header', '_blank');
+      window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
     }, 100);
   };
 
