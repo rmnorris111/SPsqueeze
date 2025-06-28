@@ -19,52 +19,44 @@ const Hero: React.FC = () => {
       });
     }
     
-    // Trigger ConvertKit modal - simplified approach
+    // Trigger ConvertKit modal with debugging
+    console.log('Button clicked:', buttonLocation);
+    console.log('ConvertKit available:', !!(window as any).ck);
+    
+    // Try ConvertKit modal first
+    if ((window as any).ck && typeof (window as any).ck.show === 'function') {
+      console.log('Attempting to show ConvertKit modal');
+      try {
+        (window as any).ck.show('d517e28d2b');
+        console.log('ConvertKit modal triggered successfully');
+        return;
+      } catch (e) {
+        console.error('ConvertKit modal failed:', e);
+      }
+    }
+    
+    // Wait a moment for ConvertKit to load if not immediately available
     setTimeout(() => {
-      let attempts = 0;
-      const maxAttempts = 10;
+      if ((window as any).ck && typeof (window as any).ck.show === 'function') {
+        console.log('ConvertKit loaded, showing modal');
+        try {
+          (window as any).ck.show('d517e28d2b');
+          return;
+        } catch (e) {
+          console.error('Delayed ConvertKit trigger failed:', e);
+        }
+      }
       
-      const tryTrigger = () => {
-        attempts++;
-        
-        // Check if ConvertKit has loaded and modal is available
-        if ((window as any).ck && typeof (window as any).ck.show === 'function') {
-          try {
-            (window as any).ck.show('d517e28d2b');
-            return true;
-          } catch (e) {
-            console.log('ck.show failed:', e);
-          }
-        }
-        
-        // Check for script elements that can be triggered
-        const scripts = document.querySelectorAll('script[data-uid="d517e28d2b"]');
-        if (scripts.length > 0) {
-          try {
-            const script = scripts[0] as HTMLElement;
-            script.click();
-            return true;
-          } catch (e) {
-            console.log('script click failed:', e);
-          }
-        }
-        
-        // If ConvertKit hasn't loaded yet, try again
-        if (attempts < maxAttempts) {
-          setTimeout(tryTrigger, 500);
-        } else {
-          // Final fallback
-          window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
-        }
-        
-        return false;
-      };
-      
-      tryTrigger();
-    }, 100);
+      // If modal still doesn't work, open form page
+      console.log('ConvertKit modal not available, opening form page');
+      window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+    }, 1000);
   };
 
-  const handleDownloadClick = (buttonLocation: string) => () => {
+  const handleDownloadClick = (buttonLocation: string) => (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent any default behavior
+    e.stopPropagation(); // Stop event bubbling
+    console.log('handleDownloadClick called for:', buttonLocation);
     scrollToDownload(buttonLocation);
   };
 

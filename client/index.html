@@ -27,7 +27,30 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <!-- ConvertKit Modal Script -->
-    <script async data-uid="d517e28d2b" src="https://rionnorris.kit.com/d517e28d2b/index.js"></script>
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        // Initialize ConvertKit with the form configuration
+        if (window.ck) {
+          window.ck.initialize({
+            uid: 'd517e28d2b',
+            format: 'modal',
+            version: 5,
+            settings: {
+              after_subscribe: {
+                action: 'message',
+                success_message: 'Success! Now check your email to get your probate guide.',
+                redirect_url: ''
+              },
+              modal: {
+                trigger: 'manual',
+                devices: 'all'
+              }
+            }
+          });
+        }
+      });
+    </script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>

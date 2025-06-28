@@ -8,7 +8,10 @@ declare global {
 }
 
 const PdfDownload: React.FC = () => {
-  const handleDownload = () => {
+  const handleDownload = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent any default behavior
+    e.stopPropagation(); // Stop event bubbling
+    console.log('PdfDownload button clicked');
     // Track main PDF download button click in Google Tag Manager
     if (typeof window !== 'undefined' && window.dataLayer) {
       window.dataLayer.push({
