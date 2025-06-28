@@ -26,30 +26,70 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- ConvertKit Modal Script -->
-    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <!-- ConvertKit Modal Form -->
+    <script async data-uid="d517e28d2b" src="https://rionnorris.kit.com/d517e28d2b/index.js"></script>
     <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        // Initialize ConvertKit with the form configuration
-        if (window.ck) {
-          window.ck.initialize({
-            uid: 'd517e28d2b',
-            format: 'modal',
-            version: 5,
-            settings: {
-              after_subscribe: {
-                action: 'message',
-                success_message: 'Success! Now check your email to get your probate guide.',
-                redirect_url: ''
-              },
-              modal: {
-                trigger: 'manual',
-                devices: 'all'
-              }
+      // Initialize ConvertKit modal functionality
+      window.showConvertKitModal = function() {
+        console.log('showConvertKitModal called');
+        
+        // Wait for ConvertKit to load
+        let attempts = 0;
+        const maxAttempts = 20;
+        
+        const checkAndShow = () => {
+          attempts++;
+          console.log('Checking ConvertKit availability, attempt:', attempts);
+          
+          // Method 1: Try window.ck.show
+          if (window.ck && typeof window.ck.show === 'function') {
+            console.log('Using window.ck.show');
+            try {
+              window.ck.show('d517e28d2b');
+              return true;
+            } catch (e) {
+              console.error('window.ck.show failed:', e);
             }
-          });
-        }
-      });
+          }
+          
+          // Method 2: Try finding and triggering the form
+          const forms = window.__sv_forms || [];
+          const targetForm = forms.find(f => f.uid === 'd517e28d2b');
+          if (targetForm && targetForm.element) {
+            console.log('Found form in __sv_forms, triggering');
+            try {
+              targetForm.element.click();
+              return true;
+            } catch (e) {
+              console.error('Form click failed:', e);
+            }
+          }
+          
+          // Method 3: Try script element trigger
+          const scripts = document.querySelectorAll('script[data-uid="d517e28d2b"]');
+          if (scripts.length > 0) {
+            console.log('Found script element, attempting click');
+            try {
+              scripts[0].click();
+              return true;
+            } catch (e) {
+              console.error('Script click failed:', e);
+            }
+          }
+          
+          // Keep trying if not successful
+          if (attempts < maxAttempts) {
+            setTimeout(checkAndShow, 300);
+          } else {
+            console.log('All attempts failed, opening fallback');
+            window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+          }
+          
+          return false;
+        };
+        
+        checkAndShow();
+      };
     </script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>

@@ -19,38 +19,20 @@ const Hero: React.FC = () => {
       });
     }
     
-    // Trigger ConvertKit modal with debugging
-    console.log('Button clicked:', buttonLocation);
-    console.log('ConvertKit available:', !!(window as any).ck);
-    
-    // Try ConvertKit modal first
-    if ((window as any).ck && typeof (window as any).ck.show === 'function') {
-      console.log('Attempting to show ConvertKit modal');
-      try {
-        (window as any).ck.show('d517e28d2b');
-        console.log('ConvertKit modal triggered successfully');
-        return;
-      } catch (e) {
-        console.error('ConvertKit modal failed:', e);
-      }
-    }
-    
-    // Wait a moment for ConvertKit to load if not immediately available
-    setTimeout(() => {
-      if ((window as any).ck && typeof (window as any).ck.show === 'function') {
-        console.log('ConvertKit loaded, showing modal');
-        try {
-          (window as any).ck.show('d517e28d2b');
-          return;
-        } catch (e) {
-          console.error('Delayed ConvertKit trigger failed:', e);
+    // Use the global ConvertKit modal function
+    if (typeof (window as any).showConvertKitModal === 'function') {
+      (window as any).showConvertKitModal();
+    } else {
+      // Fallback if the global function isn't available yet
+      setTimeout(() => {
+        if (typeof (window as any).showConvertKitModal === 'function') {
+          (window as any).showConvertKitModal();
+        } else {
+          console.log('ConvertKit modal function not available, opening form page');
+          window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
         }
-      }
-      
-      // If modal still doesn't work, open form page
-      console.log('ConvertKit modal not available, opening form page');
-      window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
-    }, 1000);
+      }, 1000);
+    }
   };
 
   const handleDownloadClick = (buttonLocation: string) => (e: React.MouseEvent) => {

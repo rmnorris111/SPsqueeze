@@ -18,49 +18,20 @@ const CallToAction: React.FC = () => {
       });
     }
     
-    // Trigger ConvertKit modal - simplified approach
-    setTimeout(() => {
-      let attempts = 0;
-      const maxAttempts = 10;
-      
-      const tryTrigger = () => {
-        attempts++;
-        
-        // Check if ConvertKit has loaded and modal is available
-        if ((window as any).ck && typeof (window as any).ck.show === 'function') {
-          try {
-            (window as any).ck.show('d517e28d2b');
-            return true;
-          } catch (e) {
-            console.log('ck.show failed:', e);
-          }
-        }
-        
-        // Check for script elements that can be triggered
-        const scripts = document.querySelectorAll('script[data-uid="d517e28d2b"]');
-        if (scripts.length > 0) {
-          try {
-            const script = scripts[0] as HTMLElement;
-            script.click();
-            return true;
-          } catch (e) {
-            console.log('script click failed:', e);
-          }
-        }
-        
-        // If ConvertKit hasn't loaded yet, try again
-        if (attempts < maxAttempts) {
-          setTimeout(tryTrigger, 500);
+    // Use the global ConvertKit modal function
+    if (typeof (window as any).showConvertKitModal === 'function') {
+      (window as any).showConvertKitModal();
+    } else {
+      // Fallback if the global function isn't available yet
+      setTimeout(() => {
+        if (typeof (window as any).showConvertKitModal === 'function') {
+          (window as any).showConvertKitModal();
         } else {
-          // Final fallback
+          console.log('ConvertKit modal function not available, opening form page');
           window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
         }
-        
-        return false;
-      };
-      
-      tryTrigger();
-    }, 100);
+      }, 1000);
+    }
   };
 
   return (
