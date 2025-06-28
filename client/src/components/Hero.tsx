@@ -21,9 +21,25 @@ const Hero: React.FC = () => {
     
     // Small delay to ensure tracking fires before showing modal
     setTimeout(() => {
-      // Trigger ConvertKit modal
-      if (typeof window !== 'undefined' && (window as any).ml_account) {
-        (window as any).ml('show', 'd517e28d2b', true);
+      // Try multiple methods to trigger ConvertKit modal
+      if (typeof window !== 'undefined') {
+        // Method 1: Direct trigger using formkit
+        if ((window as any).formkit && (window as any).formkit.show) {
+          (window as any).formkit.show('d517e28d2b');
+          return;
+        }
+        
+        // Method 2: Find and click the hidden form element
+        const scripts = document.querySelectorAll('script[data-uid="d517e28d2b"]');
+        if (scripts.length > 0) {
+          // If no API available, create a click event on the script element
+          const event = new Event('click', { bubbles: true });
+          scripts[0].dispatchEvent(event);
+          return;
+        }
+        
+        // Method 3: Fallback to redirect if modal fails
+        window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
       }
     }, 100);
   };

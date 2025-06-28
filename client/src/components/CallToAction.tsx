@@ -20,9 +20,15 @@ const CallToAction: React.FC = () => {
     
     // Small delay to ensure tracking fires before showing modal
     setTimeout(() => {
-      // Trigger ConvertKit modal
-      if (typeof window !== 'undefined' && (window as any).ml_account) {
-        (window as any).ml('show', 'd517e28d2b', true);
+      // Trigger ConvertKit modal using the correct API
+      if (typeof window !== 'undefined' && (window as any).ck && (window as any).ck.show) {
+        (window as any).ck.show('d517e28d2b');
+      } else if (typeof window !== 'undefined' && (window as any).__sv_forms) {
+        // Alternative method to trigger form
+        const form = (window as any).__sv_forms.find((f: any) => f.uid === 'd517e28d2b');
+        if (form && form.element && form.element.click) {
+          form.element.click();
+        }
       }
     }, 100);
   };
