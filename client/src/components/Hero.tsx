@@ -19,79 +19,72 @@ const Hero: React.FC = () => {
       });
     }
     
-    // Small delay to ensure tracking fires before showing modal
+    // Trigger ConvertKit modal
     setTimeout(() => {
-      const tryTriggerModal = () => {
-        // Method 1: Check for formkit global object
-        if ((window as any).formkit && typeof (window as any).formkit === 'object') {
-          try {
-            (window as any).formkit.open('d517e28d2b');
+      const triggerModal = () => {
+        // Method 1: Use global ConvertKit object if available
+        if ((window as any).ConvertKit && (window as any).ConvertKit.show) {
+          (window as any).ConvertKit.show('d517e28d2b');
+          return true;
+        }
+
+        // Method 2: Find the modal form and trigger it
+        const modalForm = document.querySelector('.formkit-form[data-uid="d517e28d2b"][data-format="modal"]');
+        if (modalForm && (window as any).__sv_forms) {
+          const formData = (window as any).__sv_forms.find((f: any) => f.uid === 'd517e28d2b');
+          if (formData && formData.element) {
+            // Trigger ConvertKit's modal display
+            const event = new CustomEvent('ck-show-modal', { detail: { uid: 'd517e28d2b' } });
+            document.dispatchEvent(event);
             return true;
-          } catch (e) {
-            // Try alternative method
-            try {
-              (window as any).formkit.show('d517e28d2b');
-              return true;
-            } catch (e2) {
-              console.log('formkit methods failed');
-            }
           }
         }
 
-        // Method 2: Check for __sv_forms and trigger directly
-        if ((window as any).__sv_forms && Array.isArray((window as any).__sv_forms)) {
-          const form = (window as any).__sv_forms.find((f: any) => f.uid === 'd517e28d2b');
-          if (form) {
-            try {
-              // Try to trigger the form's show method
-              if (form.show && typeof form.show === 'function') {
-                form.show();
-                return true;
-              }
-              // Or dispatch custom event
-              const event = new CustomEvent('sv-form-show', { detail: { uid: 'd517e28d2b' } });
-              document.dispatchEvent(event);
-              return true;
-            } catch (e) {
-              console.log('__sv_forms method failed');
+        // Method 3: Direct DOM manipulation to show modal
+        if (modalForm) {
+          (modalForm as HTMLElement).style.display = 'block';
+          (modalForm as HTMLElement).classList.add('formkit-modal-active');
+          
+          // Create backdrop
+          const backdrop = document.createElement('div');
+          backdrop.className = 'formkit-modal-backdrop';
+          backdrop.style.cssText = `
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.5); 
+            z-index: 10000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+          `;
+          backdrop.appendChild(modalForm.cloneNode(true));
+          document.body.appendChild(backdrop);
+          
+          // Close on backdrop click
+          backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) {
+              backdrop.remove();
             }
-          }
-        }
-
-        // Method 3: Try to find and trigger any ConvertKit form elements
-        const ckElements = document.querySelectorAll('[data-uid="d517e28d2b"], [data-sv-form], .formkit-form');
-        if (ckElements.length > 0) {
-          try {
-            (ckElements[0] as HTMLElement).click();
-            return true;
-          } catch (e) {
-            console.log('element click failed');
-          }
+          });
+          
+          return true;
         }
 
         return false;
       };
 
-      // Try with increasing delays to allow ConvertKit to fully load
-      let attempts = 0;
-      const maxAttempts = 5;
-      
-      const attemptTrigger = () => {
-        attempts++;
-        if (tryTriggerModal()) {
-          return; // Success!
-        }
-        
-        if (attempts < maxAttempts) {
-          setTimeout(attemptTrigger, attempts * 500); // 500ms, 1s, 1.5s, 2s delays
-        } else {
-          // Final fallback - redirect to form page
-          window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
-        }
-      };
-
-      attemptTrigger();
-    }, 100);
+      if (!triggerModal()) {
+        setTimeout(() => {
+          if (!triggerModal()) {
+            // Fallback to form page
+            window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+          }
+        }, 1000);
+      }
+    }, 200);
   };
 
   const handleDownloadClick = (buttonLocation: string) => () => {
