@@ -21,25 +21,41 @@ const Hero: React.FC = () => {
     
     // Small delay to ensure tracking fires before showing modal
     setTimeout(() => {
-      // Try multiple methods to trigger ConvertKit modal
-      if (typeof window !== 'undefined') {
-        // Method 1: Direct trigger using formkit
-        if ((window as any).formkit && (window as any).formkit.show) {
-          (window as any).formkit.show('d517e28d2b');
-          return;
+      // Simple approach: Try to trigger ConvertKit with a longer delay to ensure script loads
+      const triggerModal = () => {
+        // Method 1: Check for window.ck
+        if ((window as any).ck && (window as any).ck.show) {
+          (window as any).ck.show('d517e28d2b');
+          return true;
         }
         
-        // Method 2: Find and click the hidden form element
-        const scripts = document.querySelectorAll('script[data-uid="d517e28d2b"]');
-        if (scripts.length > 0) {
-          // If no API available, create a click event on the script element
-          const event = new Event('click', { bubbles: true });
-          scripts[0].dispatchEvent(event);
-          return;
+        // Method 2: Try dispatching a click on the script tag
+        const scriptElement = document.querySelector('script[data-uid="d517e28d2b"]');
+        if (scriptElement) {
+          const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+          });
+          scriptElement.dispatchEvent(clickEvent);
+          return true;
         }
         
-        // Method 3: Fallback to redirect if modal fails
-        window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+        return false;
+      };
+
+      // Try immediately, then retry with delays
+      if (!triggerModal()) {
+        setTimeout(() => {
+          if (!triggerModal()) {
+            setTimeout(() => {
+              if (!triggerModal()) {
+                // Final fallback - open form page
+                window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+              }
+            }, 1000);
+          }
+        }, 500);
       }
     }, 100);
   };

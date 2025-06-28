@@ -20,15 +20,36 @@ const CallToAction: React.FC = () => {
     
     // Small delay to ensure tracking fires before showing modal
     setTimeout(() => {
-      // Trigger ConvertKit modal using the correct API
-      if (typeof window !== 'undefined' && (window as any).ck && (window as any).ck.show) {
-        (window as any).ck.show('d517e28d2b');
-      } else if (typeof window !== 'undefined' && (window as any).__sv_forms) {
-        // Alternative method to trigger form
-        const form = (window as any).__sv_forms.find((f: any) => f.uid === 'd517e28d2b');
-        if (form && form.element && form.element.click) {
-          form.element.click();
+      const triggerModal = () => {
+        if ((window as any).ck && (window as any).ck.show) {
+          (window as any).ck.show('d517e28d2b');
+          return true;
         }
+        
+        const scriptElement = document.querySelector('script[data-uid="d517e28d2b"]');
+        if (scriptElement) {
+          const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+          });
+          scriptElement.dispatchEvent(clickEvent);
+          return true;
+        }
+        
+        return false;
+      };
+
+      if (!triggerModal()) {
+        setTimeout(() => {
+          if (!triggerModal()) {
+            setTimeout(() => {
+              if (!triggerModal()) {
+                window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+              }
+            }, 1000);
+          }
+        }, 500);
       }
     }, 100);
   };
