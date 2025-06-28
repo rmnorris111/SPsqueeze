@@ -21,42 +21,76 @@ const Hero: React.FC = () => {
     
     // Small delay to ensure tracking fires before showing modal
     setTimeout(() => {
-      // Simple approach: Try to trigger ConvertKit with a longer delay to ensure script loads
-      const triggerModal = () => {
-        // Method 1: Check for window.ck
-        if ((window as any).ck && (window as any).ck.show) {
-          (window as any).ck.show('d517e28d2b');
-          return true;
+      const tryTriggerModal = () => {
+        // Method 1: Check for formkit global object
+        if ((window as any).formkit && typeof (window as any).formkit === 'object') {
+          try {
+            (window as any).formkit.open('d517e28d2b');
+            return true;
+          } catch (e) {
+            // Try alternative method
+            try {
+              (window as any).formkit.show('d517e28d2b');
+              return true;
+            } catch (e2) {
+              console.log('formkit methods failed');
+            }
+          }
         }
-        
-        // Method 2: Try dispatching a click on the script tag
-        const scriptElement = document.querySelector('script[data-uid="d517e28d2b"]');
-        if (scriptElement) {
-          const clickEvent = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-          });
-          scriptElement.dispatchEvent(clickEvent);
-          return true;
+
+        // Method 2: Check for __sv_forms and trigger directly
+        if ((window as any).__sv_forms && Array.isArray((window as any).__sv_forms)) {
+          const form = (window as any).__sv_forms.find((f: any) => f.uid === 'd517e28d2b');
+          if (form) {
+            try {
+              // Try to trigger the form's show method
+              if (form.show && typeof form.show === 'function') {
+                form.show();
+                return true;
+              }
+              // Or dispatch custom event
+              const event = new CustomEvent('sv-form-show', { detail: { uid: 'd517e28d2b' } });
+              document.dispatchEvent(event);
+              return true;
+            } catch (e) {
+              console.log('__sv_forms method failed');
+            }
+          }
         }
-        
+
+        // Method 3: Try to find and trigger any ConvertKit form elements
+        const ckElements = document.querySelectorAll('[data-uid="d517e28d2b"], [data-sv-form], .formkit-form');
+        if (ckElements.length > 0) {
+          try {
+            (ckElements[0] as HTMLElement).click();
+            return true;
+          } catch (e) {
+            console.log('element click failed');
+          }
+        }
+
         return false;
       };
 
-      // Try immediately, then retry with delays
-      if (!triggerModal()) {
-        setTimeout(() => {
-          if (!triggerModal()) {
-            setTimeout(() => {
-              if (!triggerModal()) {
-                // Final fallback - open form page
-                window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
-              }
-            }, 1000);
-          }
-        }, 500);
-      }
+      // Try with increasing delays to allow ConvertKit to fully load
+      let attempts = 0;
+      const maxAttempts = 5;
+      
+      const attemptTrigger = () => {
+        attempts++;
+        if (tryTriggerModal()) {
+          return; // Success!
+        }
+        
+        if (attempts < maxAttempts) {
+          setTimeout(attemptTrigger, attempts * 500); // 500ms, 1s, 1.5s, 2s delays
+        } else {
+          // Final fallback - redirect to form page
+          window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+        }
+      };
+
+      attemptTrigger();
     }, 100);
   };
 
