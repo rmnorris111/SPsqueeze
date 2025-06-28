@@ -130,6 +130,7 @@ Simply Probate is a full-stack web application designed as a squeeze page for PD
 - Database: DATABASE_URL for PostgreSQL connection (when implemented)
 
 ## Changelog
+- June 24, 2025. Integrated ConvertKit modal popup form (d517e28d2b) - all download buttons now trigger modal instead of redirecting while preserving GTM tracking
 - June 23, 2025. Successfully committed to GitHub repository (https://github.com/rmnorris111/SPsqueeze.git) and prepared for Cloudflare Pages static deployment
 - June 23, 2025. Added comprehensive Google Tag Manager tracking to all PDF download buttons with specific location identifiers for conversion tracking
 - June 22, 2025. Migrated from Replit Agent to Replit environment - removed quiz and chatbot functionality, added PDF download squeeze page

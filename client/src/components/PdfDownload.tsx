@@ -18,9 +18,12 @@ const PdfDownload: React.FC = () => {
       });
     }
     
-    // Small delay to ensure tracking fires before redirect
+    // Small delay to ensure tracking fires before showing modal
     setTimeout(() => {
-      window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+      // Trigger ConvertKit modal
+      if (typeof window !== 'undefined' && (window as any).ml_account) {
+        (window as any).ml('show', 'd517e28d2b', true);
+      }
     }, 100);
   };
 
