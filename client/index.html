@@ -27,69 +27,113 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <!-- ConvertKit Modal Form -->
-    <script async data-uid="d517e28d2b" src="https://rionnorris.kit.com/d517e28d2b/index.js"></script>
+    <div id="convertkit-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99999; align-items: center; justify-content: center;">
+      <div style="background: white; border-radius: 12px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative;">
+        <button id="close-modal" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #666; z-index: 1;">&times;</button>
+        <form action="https://app.kit.com/forms/8242450/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8242450" data-uid="d517e28d2b" data-format="modal" data-version="5" style="background-color: rgb(255, 255, 255); border-radius: 10px; margin: 0; border: none;">
+          <div data-style="full" style="--bg-border-radius: 5px;">
+            <div data-element="column" class="formkit-column" style="padding: 40px;">
+              <div class="formkit-header" data-element="header" style="color: rgb(61, 61, 61); font-weight: 400;">
+                <h2 style="margin: 0 0 20px 0; font-size: 28px; line-height: 1.3;">Jam-packed with helpful info by probate lawyer, Rion Norris.</h2>
+              </div>
+              <div class="formkit-content" data-element="content" style="color: rgb(110, 110, 110); margin-bottom: 30px;">
+                <p style="margin: 0; font-size: 16px; line-height: 1.5;">I'll send you a comprehensive guide that walks you through the probate process (with examples).<br><br>Get the 20-page guide by subscribing below.</p>
+              </div>
+              <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert" style="list-style: none; margin: 0; padding: 0;"></ul>
+              <div data-element="fields" data-stacked="true" class="seva-fields formkit-fields" style="margin-bottom: 20px;">
+                <div class="formkit-field" style="margin-bottom: 15px;">
+                  <input class="formkit-input" aria-label="First Name" name="fields[first_name]" required="" placeholder="First Name" type="text" style="color: rgb(110, 110, 110); background-color: rgb(247, 247, 247); border-radius: 5px; font-weight: 400; width: 100%; padding: 12px; border: 1px solid #e3e3e3; font-size: 15px; box-sizing: border-box;">
+                </div>
+                <div class="formkit-field" style="margin-bottom: 20px;">
+                  <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(110, 110, 110); background-color: rgb(247, 247, 247); border-radius: 5px; font-weight: 400; width: 100%; padding: 12px; border: 1px solid #e3e3e3; font-size: 15px; box-sizing: border-box;">
+                </div>
+                <button data-element="submit" class="formkit-submit formkit-submit" type="submit" style="color: rgb(255, 255, 255); background-color: rgb(120, 94, 223); border-radius: 5px; font-weight: 700; width: 100%; padding: 15px; border: none; font-size: 16px; cursor: pointer;">
+                  <span>Download</span>
+                </button>
+              </div>
+              <div class="formkit-disclaimer" data-element="disclaimer" style="color: rgb(110, 110, 110); font-size: 14px; text-align: center;">
+                We respect your privacy. Unsubscribe at any time.
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    
     <script>
-      // Initialize ConvertKit modal functionality
+      // Custom modal functionality
       window.showConvertKitModal = function() {
-        console.log('showConvertKitModal called');
-        
-        // Wait for ConvertKit to load
-        let attempts = 0;
-        const maxAttempts = 20;
-        
-        const checkAndShow = () => {
-          attempts++;
-          console.log('Checking ConvertKit availability, attempt:', attempts);
-          
-          // Method 1: Try window.ck.show
-          if (window.ck && typeof window.ck.show === 'function') {
-            console.log('Using window.ck.show');
-            try {
-              window.ck.show('d517e28d2b');
-              return true;
-            } catch (e) {
-              console.error('window.ck.show failed:', e);
-            }
-          }
-          
-          // Method 2: Try finding and triggering the form
-          const forms = window.__sv_forms || [];
-          const targetForm = forms.find(f => f.uid === 'd517e28d2b');
-          if (targetForm && targetForm.element) {
-            console.log('Found form in __sv_forms, triggering');
-            try {
-              targetForm.element.click();
-              return true;
-            } catch (e) {
-              console.error('Form click failed:', e);
-            }
-          }
-          
-          // Method 3: Try script element trigger
-          const scripts = document.querySelectorAll('script[data-uid="d517e28d2b"]');
-          if (scripts.length > 0) {
-            console.log('Found script element, attempting click');
-            try {
-              scripts[0].click();
-              return true;
-            } catch (e) {
-              console.error('Script click failed:', e);
-            }
-          }
-          
-          // Keep trying if not successful
-          if (attempts < maxAttempts) {
-            setTimeout(checkAndShow, 300);
-          } else {
-            console.log('All attempts failed, opening fallback');
-            window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
-          }
-          
-          return false;
-        };
-        
-        checkAndShow();
+        console.log('showConvertKitModal called - showing custom modal');
+        const modal = document.getElementById('convertkit-modal');
+        if (modal) {
+          modal.style.display = 'flex';
+        }
       };
+      
+      // Close modal functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('convertkit-modal');
+        const closeBtn = document.getElementById('close-modal');
+        
+        // Close on X button
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+          });
+        }
+        
+        // Close on backdrop click
+        if (modal) {
+          modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+              modal.style.display = 'none';
+            }
+          });
+        }
+        
+        // Handle form submission
+        const form = modal.querySelector('form');
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('[data-element="submit"]');
+            
+            // Show loading state
+            if (submitButton) {
+              submitButton.textContent = 'Submitting...';
+              submitButton.disabled = true;
+            }
+            
+            // Submit to ConvertKit
+            fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            })
+            .then(response => {
+              if (response.ok) {
+                // Success - show thank you message
+                modal.innerHTML = '<div style="background: white; border-radius: 12px; max-width: 500px; width: 90%; padding: 40px; text-align: center;"><h2 style="color: #10bf7a; margin-bottom: 20px;">Success!</h2><p style="font-size: 16px; color: #666; margin-bottom: 30px;">Now check your email to get your probate guide.</p><button onclick="document.getElementById(\'convertkit-modal\').style.display=\'none\'" style="background: #10bf7a; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-size: 16px;">Close</button></div>';
+              } else {
+                throw new Error('Submission failed');
+              }
+            })
+            .catch(error => {
+              console.error('Form submission error:', error);
+              // Reset button
+              if (submitButton) {
+                submitButton.textContent = 'Download';
+                submitButton.disabled = false;
+              }
+              alert('There was an error submitting the form. Please try again.');
+            });
+          });
+        }
+      });
     </script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
