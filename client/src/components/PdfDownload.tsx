@@ -18,72 +18,49 @@ const PdfDownload: React.FC = () => {
       });
     }
     
-    // Trigger ConvertKit modal
+    // Trigger ConvertKit modal - simplified approach
     setTimeout(() => {
-      const triggerModal = () => {
-        // Method 1: Use global ConvertKit object if available
-        if ((window as any).ConvertKit && (window as any).ConvertKit.show) {
-          (window as any).ConvertKit.show('d517e28d2b');
-          return true;
-        }
-
-        // Method 2: Find the modal form and trigger it
-        const modalForm = document.querySelector('.formkit-form[data-uid="d517e28d2b"][data-format="modal"]');
-        if (modalForm && (window as any).__sv_forms) {
-          const formData = (window as any).__sv_forms.find((f: any) => f.uid === 'd517e28d2b');
-          if (formData && formData.element) {
-            // Trigger ConvertKit's modal display
-            const event = new CustomEvent('ck-show-modal', { detail: { uid: 'd517e28d2b' } });
-            document.dispatchEvent(event);
+      let attempts = 0;
+      const maxAttempts = 10;
+      
+      const tryTrigger = () => {
+        attempts++;
+        
+        // Check if ConvertKit has loaded and modal is available
+        if ((window as any).ck && typeof (window as any).ck.show === 'function') {
+          try {
+            (window as any).ck.show('d517e28d2b');
             return true;
+          } catch (e) {
+            console.log('ck.show failed:', e);
           }
         }
-
-        // Method 3: Direct DOM manipulation to show modal
-        if (modalForm) {
-          (modalForm as HTMLElement).style.display = 'block';
-          (modalForm as HTMLElement).classList.add('formkit-modal-active');
-          
-          // Create backdrop
-          const backdrop = document.createElement('div');
-          backdrop.className = 'formkit-modal-backdrop';
-          backdrop.style.cssText = `
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0,0,0,0.5); 
-            z-index: 10000; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-          `;
-          backdrop.appendChild(modalForm.cloneNode(true));
-          document.body.appendChild(backdrop);
-          
-          // Close on backdrop click
-          backdrop.addEventListener('click', (e) => {
-            if (e.target === backdrop) {
-              backdrop.remove();
-            }
-          });
-          
-          return true;
+        
+        // Check for script elements that can be triggered
+        const scripts = document.querySelectorAll('script[data-uid="d517e28d2b"]');
+        if (scripts.length > 0) {
+          try {
+            const script = scripts[0] as HTMLElement;
+            script.click();
+            return true;
+          } catch (e) {
+            console.log('script click failed:', e);
+          }
         }
-
+        
+        // If ConvertKit hasn't loaded yet, try again
+        if (attempts < maxAttempts) {
+          setTimeout(tryTrigger, 500);
+        } else {
+          // Final fallback
+          window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
+        }
+        
         return false;
       };
-
-      if (!triggerModal()) {
-        setTimeout(() => {
-          if (!triggerModal()) {
-            // Fallback to form page
-            window.open('https://rionnorris.kit.com/f32254f8c9', '_blank');
-          }
-        }, 1000);
-      }
-    }, 200);
+      
+      tryTrigger();
+    }, 100);
   };
 
   return (
